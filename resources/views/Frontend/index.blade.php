@@ -91,7 +91,7 @@
                                     <img src="{{ url('frontend/img/profile-pic.jpg') }}" alt="" />
                                 </div>
                                 <div class="post-content">
-                                    <p>_Ufff_yawrrr_ • {{ $post->created_at->diffForHumans() }}</p>
+                                    <p>{{$user->username}} • {{ $post->created_at->diffForHumans() }}</p>
                                 </div>
                             </div>
                             <div class="del-icon">
@@ -258,8 +258,8 @@
                         <div class="img-para">
                             <img src="{{ url('frontend/img/profile-pic.jpg') }}" alt="" />
                             <div class="profile-content">
-                                <p id="user-name">ufff_yawrrr_</p>
-                                <p id="profile-name">CallmeSohaib</p>
+                                <p id="user-name">{{$user->username}}</p>
+                                <p id="profile-name">{{$user->name}}</p>
                             </div>
                         </div>
                         <div class="switch-btn">

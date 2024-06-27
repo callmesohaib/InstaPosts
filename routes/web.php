@@ -18,7 +18,7 @@ use App\Http\Controllers\SignController;
 
 // Routes that require authentication
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index']);
+    Route::get('/home/{id}', [HomeController::class, 'index']);
     Route::post('/comment/{postId}', [HomeController::class, 'getComment']);
     Route::get('/upload', [HomeController::class, 'upload']);
     Route::post('/upload', [HomeController::class, 'picturePost']);

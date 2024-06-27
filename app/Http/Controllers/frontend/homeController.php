@@ -7,13 +7,17 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index($id)
     {
+        $user = DB::table('signs')->where('id', $id)->first();
         $posts = Post::with('comments')->orderBy('created_at', 'desc')->get();
-        return view('frontend.index', compact('posts'));
+
+        return view('frontend.index', compact('posts', 'user'));
     }
 
 

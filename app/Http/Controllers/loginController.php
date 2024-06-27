@@ -20,22 +20,17 @@ class LoginController extends Controller
         ]);
 
         $email = $request->input('email');
-        $password = md5($request->input('password'));  // Hash the input password
+        $password = md5($request->input('password'));
 
         $user = DB::table('signs')->where('email', $email)->first();
 
         if (!$user) {
-            // Email not found, redirect to signup
             return redirect('/signup')->with('error', 'You have no account. Please create a new account.');
         }
-
-        // Manually check the hashed password
         if ($user->password === $password) {
-            // Log the user in
             Auth::loginUsingId($user->id);
-            return redirect()->intended('/home');
+            return redirect('/home/' . $user->id);
         } else {
-            // Invalid credentials
             return redirect()->back()->with('error', 'Invalid credentials. Please try again.');
         }
     }
