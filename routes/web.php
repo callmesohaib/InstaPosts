@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\homeController;
-use App\Http\Controllers\frontend\loginController;
-use App\Http\Controllers\frontend\signController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\signController;
 
 /*
 |--------------------------------------------------------------------------
