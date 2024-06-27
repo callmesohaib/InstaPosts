@@ -25,8 +25,7 @@ SignUp Pagge
 ![Instagram - Google Chrome 23-Jun-24 6_20_41 PM](https://github.com/callmesohaib/Instagram/assets/132386212/1a304b3a-4926-4be7-ac7c-272c92c77674)
 
 
-![Sign up • Instagram - Google Chrome 26-Jun-24 7_04_42 PM](https://github.com/callmesohaib/Instagram-Backend/assets/132386212/afcd8a18-3838-47c5-a3d2-59faa105f2cd)
-
+![Sign up • Instagram - Google Chrome 27-Jun-24 10_54_41 AM](https://github.com/callmesohaib/InstaPosts/assets/132386212/5e8b2ef3-0a06-48a0-969d-51ef7a07d864)
 ## Contact
 
 You can Contact me on  linkedin
