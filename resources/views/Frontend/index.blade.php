@@ -7,10 +7,10 @@
     <title>Instagram</title>
     <link data-default-icon="https://static.cdninstagram.com/rsrc.php/v3/yI/r/VsNE-OHk_8a.png" rel="icon"
         sizes="192x192" href="https://static.cdninstagram.com/rsrc.php/v3/yI/r/VsNE-OHk_8a.png" />
-    <link rel="stylesheet" href="{{ url('frontend/css/style.css') }} " />
-    <link rel="stylesheet" href="{{ url('frontend/css/footer.css') }}" />
-    <link rel="stylesheet" href="{{ url('frontend/css/header.css') }}" />
-    <link rel="stylesheet" href="{{ url('frontend/css/middle.css') }}" />
+    <link rel="stylesheet" href="{{ url('frontend/css/Home/style.css') }} " />
+    <link rel="stylesheet" href="{{ url('frontend/css/Home/footer.css') }}" />
+    <link rel="stylesheet" href="{{ url('frontend/css/Home/header.css') }}" />
+    <link rel="stylesheet" href="{{ url('frontend/css/Home/middle.css') }}" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

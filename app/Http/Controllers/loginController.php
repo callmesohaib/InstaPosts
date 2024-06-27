@@ -13,22 +13,24 @@ class loginController extends Controller
     }
     public function login(Request $request)
     {
-        // Validate the request
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:4'
         ]);
-        $hashedPassword = md5($request->input('password'));
-        // Check if the email and password exist in the signs table
-        $exists = DB::table('signs')
-            ->where('email', $request->input('email'))
-            ->where('password', $hashedPassword) // Note: Passwords should be hashed in a real application
-            ->exists();
 
-        if ($exists) {
-            return redirect('/home');
+        $hashedPassword = md5($request->input('password'));
+        $user = DB::table('signs')
+            ->where('email', $request->input('email'))
+            ->first();
+
+        if ($user) {
+            if ($user->password === $hashedPassword) {
+                return redirect('/home');
+            } else {
+                return redirect()->back()->with('error', 'Invalid credentials. Please try again.');
+            }
         } else {
-            return redirect('/signup');
+            return redirect('/signup')->with('error', 'You have no account. Please create a new account.');
         }
     }
 }

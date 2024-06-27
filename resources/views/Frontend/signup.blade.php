@@ -15,226 +15,7 @@
         rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet" />
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: white;
-            font-family: "Poppins", sans-serif;
-        }
-
-        .container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background-color: white;
-        }
-
-        .mini-container {
-            display: flex;
-            width: 80%;
-            flex-direction: column;
-            margin-bottom: 2.5rem;
-        }
-
-        .sign-up {
-            display: flex;
-            justify-content: center;
-            border: 1px solid #dbdbdb;
-            height: 100%;
-            width: 350px;
-            margin-top: 12px;
-        }
-
-        h1 {
-            font-family: "Grand Hotel", cursive;
-            font-size: 3.2rem;
-            color: #262626;
-            text-align: center;
-            margin-top: 20px;
-            font-weight: 500;
-        }
-
-        p {
-            text-align: center;
-            color: #737373;
-            font-size: 0.8rem;
-        }
-
-        button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 149, 246, 1);
-            border: none;
-            color: white;
-            font-size: 0.9rem;
-            width: 100%;
-            font-weight: 500;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 1rem;
-        }
-
-        button p {
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        button:hover {
-            background-color: rgba(0, 119, 246, 1);
-        }
-
-        .bx {
-            font-size: 1.3rem;
-            margin-right: 6px;
-        }
-
-        .or-content {
-            margin-top: 2rem;
-            display: flex;
-        }
-
-        .left {
-            width: 40%;
-            height: 10%;
-            border: 1px solid #dbdbdb;
-        }
-
-        .or {
-            margin-top: -10px;
-            width: 20%;
-        }
-
-        .right {
-            width: 40%;
-            border: 1px solid #dbdbdb;
-            height: 10%;
-        }
-
-        form {
-            margin-top: 1rem;
-        }
-
-        form input {
-            width: 100%;
-            height: 40px;
-            background-color: #fafafa;
-            border: 1px solid #dbdbdb;
-            outline: none;
-            padding-left: 0.5rem;
-            margin-bottom: 0.3rem;
-            border-radius: 5px;
-        }
-
-        ::placeholder {
-            font-size: 0.8rem;
-            color: #737373;
-        }
-
-        .agreement {
-            margin-top: 0.5rem;
-        }
-
-        .agreement p a {
-            text-decoration: none;
-        }
-
-        .agreement {
-            margin-top: 0.5rem;
-        }
-
-        .agreement p {
-            font-size: 0.7rem;
-        }
-
-        .agreement p a {
-            text-decoration: none;
-        }
-
-        .sign-btn {
-            color: rgba(0, 149, 246, 1);
-        }
-
-        .login-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 0.7rem;
-            width: 350px;
-            border: 1px solid #dbdbdb;
-            height: 100px;
-            margin-bottom: 1rem;
-        }
-
-        .login-container a {
-            color: #0095f6;
-            font-weight: 500;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        .login-container p {
-            font-size: 1rem;
-            color: black;
-        }
-
-        .get p {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            color: black;
-        }
-
-        .other-options {
-            width: 70%;
-            height: 100px;
-        }
-
-        .options {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .options a {
-            text-decoration: none;
-            color: #737373;
-            font-size: 0.7rem;
-            font-weight: 400;
-        }
-
-        .copyright {
-            display: flex;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .copyright p {
-            display: flex;
-            color: #737373;
-            font-size: 0.7rem;
-            font-weight: 400;
-            margin-left: 20px;
-        }
-
-        .copyright select {
-            margin-top: 2px;
-            display: flex;
-            color: #737373;
-            font-size: 0.7rem;
-            border: none;
-        }
-
-        .copyright select:focus {
-            border: none;
-        }
-    </style>
+<link rel="stylesheet" href="{{ url('frontend/css/Login-Signup/signup.css') }} ">
 </head>
 
 <body>
@@ -246,6 +27,11 @@
                     <p>
                         Sign up to see photos and videos from your friends.
                     </p>
+                    @if (session('error'))
+                        <div style="color: red; text-align: center; font-size:13px;  margin-bottom: 10px;">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <button>
                         <i class="bx bxl-facebook-square"></i>
                         <p>Log in with Facebook</p>
@@ -260,29 +46,35 @@
                     <form action="{{ url('/') }}/signup" method="post" autocomplete="off">
                         @csrf
                         <label class="email">
-                            <input type="text" name="email" class="emailnumber"
+                            <input type="text" name="email" value="{{ old('email') }}" class="emailnumber"
                                 placeholder="Mobile Number or email address" required />
-                                @if ($errors->has('email'))
-                                <span class="text-danger" style="color: red;">{{ $errors->first('email') }}</span>
+                            @if ($errors->has('email'))
+                                <span class="text-danger"
+                                    style="color: red; font-size:13px; ">{{ $errors->first('email') }}</span>
                             @endif
                         </label>
                         <label class="name">
-                            <input type="text" name="name" class="name" placeholder="Full Name" required />
+                            <input type="text" name="name" class="name" value="{{ old('name') }}"
+                                placeholder="Full Name" required />
                             @if ($errors->has('name'))
-                            <span class="text-danger" style="color: red;">{{ $errors->first('name') }}</span>
-                        @endif
+                                <span class="text-danger"
+                                    style="color: red; font-size:13px; ">{{ $errors->first('name') }}</span>
+                            @endif
                         </label>
                         <label class="username">
-                            <input type="text" name="username" class="username" placeholder="Username" required />
+                            <input type="text" name="username" class="username"value="{{ old('username') }}"
+                                placeholder="Username" required />
                             @if ($errors->has('username'))
-                            <span class="text-danger" style="color: red;">{{ $errors->first('username') }}</span>
-                        @endif
+                                <span class="text-danger"
+                                    style="color: red; font-size:13px; ">{{ $errors->first('username') }}</span>
+                            @endif
                         </label>
                         <label class="password">
                             <input type="password" name="password" class="password" placeholder="Password" required />
                             @if ($errors->has('password'))
-                            <span class="text-danger" style="color: red;">{{ $errors->first('password') }}</span>
-                        @endif 
+                                <span class="text-danger"
+                                    style="color: red; font-size:13px; ">{{ $errors->first('password') }}</span>
+                            @endif
                         </label>
 
                         <div class="agreement">
@@ -334,7 +126,8 @@
                 <a href="https://www.instagram.com/explore/locations/" target="_blank">Locations</a>
                 <a href="https://www.instagram.com/web/lite/" target="_blank">Instagram Lite</a>
                 <a href="https://www.threads.net/" target="_blank">Threads</a>
-                <a href="https://www.facebook.com/help/instagram/261704639352628" target="_blank">Contact uploading and
+                <a href="https://www.facebook.com/help/instagram/261704639352628" target="_blank">Contact uploading
+                    and
                     non-users</a>
                 <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fmeta_verified%2F%3Fentrypoint%3Dweb_footer%26__coig_login%3D1"
                     target="_blank">Meta Verfied</a>

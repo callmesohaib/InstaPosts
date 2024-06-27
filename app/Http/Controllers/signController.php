@@ -18,7 +18,7 @@ class signController extends Controller
         $request->validate(
             [
                 'name' => 'required',
-                'username' => 'required | unique',
+                'username' => 'required | unique:signs',
                 'email' => 'required | email',
                 'password' => 'required|min:4',
             ]
