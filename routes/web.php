@@ -24,7 +24,9 @@ Route::post('/upload', [HomeController::class, 'picturePost']);
 Route::delete('/post/{postId}', [HomeController::class, 'deletePost'])->name('post.delete');
 
 Route::get("/", [LoginController::class,"index"]);
+Route::post("/", [LoginController::class,"login"]);
 Route::get('/signup',[signController::class,'index']);
+Route::post('/signup',[signController::class,'sign']);
 
 
 

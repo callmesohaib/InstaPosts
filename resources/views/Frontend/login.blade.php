@@ -120,7 +120,7 @@
                 color: #385185;
                 font-weight: 600;
             }
-            .bx{
+            .bx {
                 margin-right: 0.5rem;
                 font-size: 1.5rem;
             }
@@ -248,11 +248,12 @@
                     <div>
                         <h1>Instagram</h1>
 
-                        <form action="" autocomplete="off">
+                        <form action="{{url('/')}}" method="post" autocomplete="off">
+                            @csrf
                             <label class="email">
                                 <input
                                     type="text"
-                                    name="emailornumber"
+                                    name="email"
                                     class="emailnumber"
                                     placeholder="Mobile Number or email address"
                                     required
@@ -267,7 +268,7 @@
                                     required
                                 />
                             </label>
-                            <button>
+                            <button type="submit">
                                 <p>Log in</p>
                             </button>
                         </form>
@@ -289,7 +290,10 @@
                 </div>
             </div>
             <div class="sign-up">
-                <p>Don't have an account? <a href="{{url('/signup')}}">Sign up</a></p>
+                <p>
+                    Don't have an account?
+                    <a href="{{ url('/signup') }}">Sign up</a>
+                </p>
             </div>
 
             <div class="get">
