@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\frontend\homeController;
-use App\Http\Controllers\loginController;
-use App\Http\Controllers\signController;
+use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +16,16 @@ use App\Http\Controllers\signController;
 |
 */
 
+// Routes that require authentication
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index']);
+    Route::post('/comment/{postId}', [HomeController::class, 'getComment']);
+    Route::get('/upload', [HomeController::class, 'upload']);
+    Route::post('/upload', [HomeController::class, 'picturePost']);
+    Route::delete('/post/{postId}', [HomeController::class, 'deletePost'])->name('post.delete');
+});
 
-Route::get('/home', [HomeController::class, 'index']);
-Route::post('/comment/{postId}', [HomeController::class, 'getComment']);
-Route::get('/upload', [HomeController::class, 'upload']);
-Route::post('/upload', [HomeController::class, 'picturePost']);
-Route::delete('/post/{postId}', [HomeController::class, 'deletePost'])->name('post.delete');
-
-Route::get("/", [LoginController::class,"index"]);
-Route::post("/", [LoginController::class,"login"]);
-Route::get('/signup',[signController::class,'index']);
-Route::post('/signup',[signController::class,'sign']);
-
-
-
-
+Route::get("/", [LoginController::class, "index"])->name('login');
+Route::post("/", [LoginController::class, "login"]);
+Route::get('/signup', [SignController::class, 'index']);
+Route::post('/signup', [SignController::class, 'sign']);

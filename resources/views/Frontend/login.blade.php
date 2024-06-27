@@ -39,6 +39,11 @@
                             {{ session('error') }}
                         </div>
                     @endif
+                        @if (session('success'))
+                        <div style="color: rgb(31, 216, 31); text-align: center; font-size:13px;  margin-bottom: 10px;">
+                            {{ session('success') }}
+                        </div>
+                    @endif
 
                         <form action="{{url('/')}}" method="post" autocomplete="off">
                             @csrf

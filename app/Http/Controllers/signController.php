@@ -1,13 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Sign;
+use Illuminate\Support\Facades\DB;
 
-class signController extends Controller
+
+class SignController extends Controller
 {
-
     public function index()
     {
         return view("frontend.signup");
@@ -15,23 +14,22 @@ class signController extends Controller
 
     public function sign(Request $request)
     {
-        $request->validate(
-            [
-                'name' => 'required',
-                'username' => 'required | unique:signs',
-                'email' => 'required | email',
-                'password' => 'required|min:4',
-            ]
-        );
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required|unique:signs',
+            'email' => 'required|email|unique:signs',
+            'password' => 'required|min:4'
+        ]);
 
-        $person = new Sign;
-        $person->name = $request['name'];
-        $person->username = $request['username'];
-        $person->email = $request['email'];
-        $person->password = md5($request['password']);
-        $person->save();
-        return redirect('/');
+        $data = [
+            'name' => $request->input('name'),
+            'username' => $request->input('username'),
+            'email' => $request->input('email'),
+            'password' => md5($request->input('password')),
+        ];
 
+        DB::table('signs')->insert($data);
 
+        return redirect('/')->with('success', 'Account created successfully. Please log in.');
     }
 }
