@@ -1,0 +1,50 @@
+.header {
+  border-right: 1px solid #a5a5a5;
+  width: 20%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+}
+.header h1 {
+  margin-left: 2rem;
+  font-family: "Grand Hotel", cursive;
+  font-weight: 500;
+  padding-left: 15px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1rem;
+  font-size: 1rem;
+}
+.menu ul li {
+  display: flex;
+  list-style: none;
+  text-align: left;
+  font-weight: 300;
+  padding-left: 15px;
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+  transition: 0.3s ease-in-out;
+}
+
+.menu ul li:hover {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-right: 17px;
+
+}
+.menu img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.menu .bx {
+  font-size: 1.7rem;
+}

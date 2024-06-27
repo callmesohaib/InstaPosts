@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --gradient: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #686868;
+}
+::-webkit-scrollbar-track {
+  background-color: #4b4c4f;
+  width: 50px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  z-index: 1;
+  justify-content: space-between;
+}
+
