@@ -289,7 +289,7 @@
                 </div>
             </div>
             <div class="sign-up">
-                <p>Don't have an account? <a href="{{url('/')}}">Sign up</a></p>
+                <p>Don't have an account? <a href="{{url('/signup')}}">Sign up</a></p>
             </div>
 
             <div class="get">

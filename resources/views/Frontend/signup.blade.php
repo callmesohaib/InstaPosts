@@ -5,6 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Sign up • Instagram</title>
+        <link
+        data-default-icon="https://static.cdninstagram.com/rsrc.php/v3/yI/r/VsNE-OHk_8a.png"
+        rel="icon"
+        sizes="192x192"
+        href="https://static.cdninstagram.com/rsrc.php/v3/yI/r/VsNE-OHk_8a.png"
+    />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -308,7 +314,7 @@
                 </div>
             </div>
             <div class="login-container">
-                <p>Have an account? <a href="{{url('/login')}}">Log in</a></p>
+                <p>Have an account? <a href="{{url('/')}}">Log in</a></p>
             </div>
 
             <div class="get">

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\homeController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\signController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,17 +17,15 @@ use App\Http\Controllers\frontend\homeController;
 */
 
 
-// Route::get('/', [HomeController::class, 'index']);
-// Route::post('/comment/{postId}', [HomeController::class, 'getComment']);
-// Route::get('/upload', [HomeController::class, 'upload']);
-// Route::post('/upload', [HomeController::class, 'picturePost']);
-// Route::delete('/post/{postId}', [HomeController::class, 'deletePost'])->name('post.delete');
+Route::get('/home', [HomeController::class, 'index']);
+Route::post('/comment/{postId}', [HomeController::class, 'getComment']);
+Route::get('/upload', [HomeController::class, 'upload']);
+Route::post('/upload', [HomeController::class, 'picturePost']);
+Route::delete('/post/{postId}', [HomeController::class, 'deletePost'])->name('post.delete');
 
-Route::get('/', function () {
-    return view('frontend.signup');
-});
-Route::get('/login', function () {
-    return view('frontend.login');
-});
+Route::get("/", [LoginController::class,"index"]);
+Route::get('/signup',[signController::class,'index']);
+
+
 
 
