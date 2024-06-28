@@ -17,7 +17,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -57,6 +57,10 @@
                         <a href="{{ url('/upload') }}">Create</a>
                     </li>
                     <li>
+                        <i class='bx bx-log-out'></i>
+                        <a href="{{ url('/') }}">Logout</a>
+                    </li>
+                    <li>
                         <img src="{{ url('frontend/img/profile-pic.jpg') }}" alt="" />
                         <a href="#">Profile</a>
                     </li>
@@ -91,7 +95,7 @@
                                     <img src="{{ url('frontend/img/profile-pic.jpg') }}" alt="" />
                                 </div>
                                 <div class="post-content">
-                                    <p>{{$user->username}} • {{ $post->created_at->diffForHumans() }}</p>
+                                    <p>{{ $user->username }} • {{ $post->created_at->diffForHumans() }}</p>
                                 </div>
                             </div>
                             <div class="del-icon">
@@ -258,8 +262,8 @@
                         <div class="img-para">
                             <img src="{{ url('frontend/img/profile-pic.jpg') }}" alt="" />
                             <div class="profile-content">
-                                <p id="user-name">{{$user->username}}</p>
-                                <p id="profile-name">{{$user->name}}</p>
+                                <p id="user-name">{{ $user->username }}</p>
+                                <p id="profile-name">{{ $user->name }}</p>
                             </div>
                         </div>
                         <div class="switch-btn">
