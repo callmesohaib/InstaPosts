@@ -23,7 +23,7 @@
     <div class="container">
         <h1>Instagram</h1>
         <div class="profile-img">
-            <img src="{{ url('frontend/img/profile.jpg') }}" alt="" />
+            <img src="{{ url('frontend/user-profiles/'.$user->img) }}" alt="" />
         </div>
         <div class="info">
             <div class="labels">
@@ -46,11 +46,14 @@
             <a href="{{ url('/Del/' . $user->id) }}">
                 <button class="btn btn-danger">Delete</button>
             </a>
-            <button class="btn btn-success" onclick="document.getElementById('uploadPhoto').click()">Change Photo</button>
+            <button class="btn btn-success" onclick="document.getElementById('uploadPhoto').click()">Change
+                Photo</button>
         </div>
-        <form id="photoForm" action="{{ url('/change-photo/' . $user->id) }}" method="POST" enctype="multipart/form-data" style="display:none;">
+        <form id="photoForm" action="{{ url('/change-photo/' . $user->id) }}" method="POST"
+            enctype="multipart/form-data" style="display:none;">
             @csrf
-            <input type="file" name="photo" id="uploadPhoto" onchange="document.getElementById('photoForm').submit()">
+            <input type="file" name="img" id="uploadPhoto"
+                onchange="document.getElementById('photoForm').submit()">
         </form>
     </div>
 </body>

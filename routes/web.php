@@ -24,13 +24,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/comment/{postId}', [HomeController::class, 'getComment']);
     Route::get('/upload', [HomeController::class, 'upload']);
     Route::post('/upload', [HomeController::class, 'picturePost']);
-    Route::get('/logout',[logoutController::class, 'logout']);
+    Route::get('/logout', [logoutController::class, 'logout']);
     Route::delete('/post/{postId}', [HomeController::class, 'deletePost'])->name('post.delete');
-    Route::get('/profile/{id}',[profileController::class, 'index'])->name('profile');
-    Route::get('/Del/{id}',[profileController::class, 'delete']);
-    Route::get('/edit/{id}',[profileController::class, 'edit']);
-    // Route::get('/update/{id}',[profileController::class, 'update']);
-    Route::post('/edit/{id}',[profileController::class, 'update']);
+    Route::get('/profile/{id}', [profileController::class, 'index'])->name('profile');
+    Route::get('/Del/{id}', [profileController::class, 'delete']);
+    Route::get('/edit/{id}', [profileController::class, 'edit']);
+    Route::post('/change-photo/{id}', [ProfileController::class, 'changePhoto'])->name('change.photo');
+    Route::post('/edit/{id}', [profileController::class, 'update']);
 });
 
 Route::get("/", [LoginController::class, "index"])->name('login');

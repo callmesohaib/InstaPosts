@@ -61,7 +61,7 @@
                         <a href="{{ url('/logout') }}">Logout</a>
                     </li>
                     <li>
-                        <img src="{{ url('frontend/img/'.$user->img) }}" alt="" />
+                        <img src="{{ url('frontend/user-profiles/'.$user->img) }}" alt="" />
                         <a href="{{url('/profile/'.$user->id)}}">Profile</a>
                     </li>
                 </ul>
@@ -260,7 +260,7 @@
                 <div class="my-profile">
                     <div class="profile-info">
                         <div class="img-para">
-                            <img src="{{ url('frontend/img/'.$user->img) }}" alt="" />
+                            <img src="{{ url('frontend/user-profiles/'.$user->img) }}" alt="" />
                             <div class="profile-content">
                                 <p id="user-name">{{ $user->username }}</p>
                                 <p id="profile-name">{{ $user->name }}</p>
