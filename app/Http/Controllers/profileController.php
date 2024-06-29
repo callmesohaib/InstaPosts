@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\Sign;
 
@@ -14,6 +15,11 @@ class profileController extends Controller
 
     public function delete($id)
     {
+        $user = Sign::findOrFail($id);
+        $imagePath = public_path('frontend/user-profiles/' . $user->img);
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
         Sign::destroy($id);
         return redirect()->route('login');
     }

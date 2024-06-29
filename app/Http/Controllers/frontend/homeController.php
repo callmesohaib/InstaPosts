@@ -74,7 +74,7 @@ class HomeController extends Controller
             File::delete($imagePath);
         }
         $post->delete();
-        return redirect()->back()->with('success', 'Post deleted successfully');
+        return redirect()->back();
     }
 
 }
