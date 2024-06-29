@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Hash;
 
 class SignController extends Controller
 {
@@ -25,7 +25,7 @@ class SignController extends Controller
             'name' => $request->input('name'),
             'username' => $request->input('username'),
             'email' => $request->input('email'),
-            'password' => md5($request->input('password')),
+            'password' => Hash::make($request->input('password')),
         ];
 
         DB::table('signs')->insert($data);

@@ -1,9 +1,12 @@
 <?php
+
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -20,14 +23,17 @@ class LoginController extends Controller
         ]);
 
         $email = $request->input('email');
-        $password = md5($request->input('password'));
+        $password = $request->input('password');
+
 
         $user = DB::table('signs')->where('email', $email)->first();
 
         if (!$user) {
             return redirect('/signup')->with('error', 'You have no account. Please create a new account.');
         }
-        if ($user->password === $password) {
+
+ 
+        if (Hash::check($password, $user->password)) {
             Auth::loginUsingId($user->id);
             return redirect('/home/' . $user->id);
         } else {

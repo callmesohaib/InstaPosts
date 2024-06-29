@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignController;
+use App\Http\Controllers\logoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/comment/{postId}', [HomeController::class, 'getComment']);
     Route::get('/upload', [HomeController::class, 'upload']);
     Route::post('/upload', [HomeController::class, 'picturePost']);
+    Route::get('/logout',[logoutController::class, 'logout']);
     Route::delete('/post/{postId}', [HomeController::class, 'deletePost'])->name('post.delete');
 });
 

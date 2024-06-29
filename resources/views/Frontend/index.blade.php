@@ -58,7 +58,7 @@
                     </li>
                     <li>
                         <i class='bx bx-log-out'></i>
-                        <a href="{{ url('/') }}">Logout</a>
+                        <a href="{{ url('/logout') }}">Logout</a>
                     </li>
                     <li>
                         <img src="{{ url('frontend/img/profile-pic.jpg') }}" alt="" />
