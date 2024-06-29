@@ -26,6 +26,7 @@ class SignController extends Controller
             'username' => $request->input('username'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
+            'img' => 'profile.jpg',
         ];
 
         DB::table('signs')->insert($data);
