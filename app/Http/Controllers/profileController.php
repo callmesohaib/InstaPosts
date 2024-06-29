@@ -16,9 +16,11 @@ class profileController extends Controller
     public function delete($id)
     {
         $user = Sign::findOrFail($id);
-        $imagePath = public_path('frontend/user-profiles/' . $user->img);
-        if (File::exists($imagePath)) {
-            File::delete($imagePath);
+        if ($user->img != "profile.jpg") {
+            $imagePath = public_path('frontend/user-profiles/' . $user->img);
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
         }
         Sign::destroy($id);
         return redirect()->route('login');
