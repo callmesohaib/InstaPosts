@@ -11,7 +11,11 @@ class Sign extends Model
     protected $fillable = [
         'name',
         'username',
-        'email',
+        'email',    
         'password',
     ];
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Sign;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -36,31 +37,30 @@ class HomeController extends Controller
     }
 
 
-    public function upload()
+    public function upload($id)
     {
-        return view('frontend.upload');
+        $user = Sign::findOrFail($id);
+        return view('frontend.upload', compact('user'));
     }
 
-    public function picturePost(Request $request)
+    public function picturePost(Request $request, $id)
     {
-        $i = $request->session()->get('image_counter', 1);
+        $user = Sign::findOrFail($id);
+        $post = new Post;
 
         if ($request->hasfile('img')) {
             foreach ($request->file('img') as $file) {
-                $fileName = 'pic-' . $i . '.' . $file->getClientOriginalExtension();
+                $fileName = 'user-' . $user->id . 'pic-' . time() . '.' . $file->getClientOriginalExtension();
                 $destinationPath = public_path('frontend/uploads');
                 $file->move($destinationPath, $fileName);
-                try {
-                    Post::create(['image' => $fileName]);
-                } catch (\Exception $e) {
-                    return redirect()->back()->with('error', 'Failed to create Post record: ' . $e->getMessage());
-                }
-                $i++;
+                $post->user_id = $user->id;
+                $post->image = $fileName;
+                $post->save();
+
             }
-            $request->session()->put('image_counter', $i);
         }
 
-        return redirect('/')->with('success', 'Images uploaded successfully');
+        return redirect('/home/' . $user->id);
     }
 
 

@@ -54,7 +54,7 @@
                     </li>
                     <li>
                         <i class="bx bx-message-square-add"></i>
-                        <a href="{{ url('/upload') }}">Create</a>
+                        <a href="{{ url('/upload/'. $user->id) }}">Create</a>
                     </li>
                     <li>
                         <i class='bx bx-log-out'></i>
@@ -92,10 +92,11 @@
                         <div class="post-header">
                             <div class="post-info">
                                 <div class="post-img">
-                                    <img src="{{ url('frontend/img/profile-pic.jpg') }}" alt="" />
+                                    <img src="{{ url('frontend/user-profiles/' . $post->user->img) }}" alt="" />
                                 </div>
                                 <div class="post-content">
-                                    <p>{{ $user->username }} • {{ $post->created_at->diffForHumans() }}</p>
+                                    <p>{{ $post->user->username }} • {{ $post->created_at->diffForHumans() }}</p>
+
                                 </div>
                             </div>
                             <div class="del-icon">
