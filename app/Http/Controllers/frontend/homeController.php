@@ -22,7 +22,7 @@ class HomeController extends Controller
     }
 
 
-    public function getComment(Request $request, $postId)
+    public function getComment(Request $request, $postId, $id)
     {
         $request->validate([
             'comment' => 'required|max:255',
@@ -30,10 +30,12 @@ class HomeController extends Controller
 
         Comment::create([
             'post_id' => $postId,
+            'user_id' => $id,
             'comment' => $request->input('comment')
+
         ]);
 
-        return redirect('/');
+        return redirect('/home/' . $id);
     }
 
 

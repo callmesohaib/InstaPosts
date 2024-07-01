@@ -21,7 +21,7 @@ use App\Http\Controllers\profileController;
 // Routes that require authentication
 Route::middleware(['auth'])->group(function () {
     Route::get('/home/{id}', [HomeController::class, 'index'])->name('home');
-    Route::post('/comment/{postId}', [HomeController::class, 'getComment']);
+    Route::post('/comment/{postId}/{id}', [HomeController::class, 'getComment']);
     Route::get('/upload/{id}', [HomeController::class, 'upload']);
     Route::post('/upload/{id}', [HomeController::class, 'picturePost']);
     Route::get('/logout', [logoutController::class, 'logout']);
