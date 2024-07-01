@@ -101,16 +101,12 @@
                                 </div>
                             </div>
                             @if ($post->user->username == $user->username)
-                                
                                 <div class="del-icon">
-                                    <form action="{{ route('post.delete', ['postId' => $post->id]) }}" method="POST"
-                                        onsubmit="return confirm('Are you sure you want to delete this post?')">
-                                        @csrf
-                                        @method('DELETE')
+                                    <a href="{{ url('deletepost/' . $post->id . '/' . $user->id) }}">
                                         <button type="submit"><i class='bx bx-trash'></i></button>
-                                    </form>
+                                    </a>
+
                                 </div>
-                                
                             @endif
 
                         </div>

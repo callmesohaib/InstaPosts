@@ -66,7 +66,7 @@ class HomeController extends Controller
     }
 
 
-    public function deletePost($postId)
+    public function deletePost($postId, $user_id)
     {
 
         $post = Post::findOrFail($postId);
@@ -76,7 +76,7 @@ class HomeController extends Controller
             File::delete($imagePath);
         }
         $post->delete();
-        return redirect()->back();
+        return redirect('/home/' . $user_id);
     }
 
 }

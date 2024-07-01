@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/upload/{id}', [HomeController::class, 'upload']);
     Route::post('/upload/{id}', [HomeController::class, 'picturePost']);
     Route::get('/logout', [logoutController::class, 'logout']);
-    Route::delete('/post/{postId}', [HomeController::class, 'deletePost'])->name('post.delete');
+    Route::get('/deletepost/{postId}/{user_id}', [HomeController::class, 'deletePost'])->name('post.delete');
     Route::get('/profile/{id}', [profileController::class, 'index'])->name('profile');
     Route::get('/Del/{id}', [profileController::class, 'delete']);
     Route::get('/edit/{id}', [profileController::class, 'edit']);
