@@ -67,6 +67,9 @@
                 </ul>
             </div>
         </div>
+
+
+        
         <div class="posts">
             <div class="story-section">
                 <div class="story">
@@ -179,12 +182,10 @@
                     </div>
                 </div>
             @endforeach
-
-
-
-
-
         </div>
+
+
+
         <div class="right">
             <div class="center-box">
                 <div class="my-profile">
