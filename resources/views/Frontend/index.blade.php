@@ -69,7 +69,7 @@
         </div>
 
 
-        
+
         <div class="posts">
             <div class="story-section">
                 <div class="story">
@@ -119,9 +119,14 @@
                         <div class="post-footer">
                             <div class="icons-row">
                                 <div class="left-icon">
-                                    <div class="like">
-                                        <i class="bx bx-heart"></i>
-                                    </div>
+                                    <a href="{{ url('/like/' . $post->id . '/' . $user->id) }}">
+                                        @php
+                                            $userHasLiked = $post->likes->contains('user_id', $user->id);
+                                        @endphp
+                                        <button type="submit" class="like-button {{ $userHasLiked ? 'liked' : '' }}">
+                                            <i class="bx {{ $userHasLiked ? 'bxs-heart' : 'bx-heart' }}"></i>
+                                        </button>
+                                    </a>
                                     <div class="com">
                                         <i class="bx bx-message-rounded"></i>
                                     </div>
@@ -136,7 +141,19 @@
                                 </div>
                             </div>
                             <div class="post-like">
-                                <p>Liked by <span>itx_me._.27</span> and <span>others</span></p>
+                                @if ($post->likes->count() > 0)
+                                    <p>
+                                        Liked by
+                                        @foreach ($post->likes->take(2) as $like)
+                                            <span>{{ $like->user->username }}</span>{{ $loop->last ? '' : ',' }}
+                                        @endforeach
+                                        @if ($post->likes->count() > 2)
+                                            and <span>{{ $post->likes->count() - 2 }} others</span>
+                                        @endif
+                                    </p>
+                                @else
+                                    <p>No likes yet</p>
+                                @endif
                             </div>
                             <div class="post-comment">
                                 @if ($post->comments->count() > 0)

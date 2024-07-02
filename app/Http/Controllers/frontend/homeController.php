@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Sign;
+use App\Models\Like;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -76,6 +77,23 @@ class HomeController extends Controller
             File::delete($imagePath);
         }
         $post->delete();
+        return redirect('/home/' . $user_id);
+    }
+    public function likePost($postId,$user_id)
+    {
+        
+        $like = Like::where('post_id', $postId)->where('user_id', $user_id)->first();
+
+        if ($like) {
+            $like->delete();
+        } else {
+
+            Like::create([
+                'post_id' => $postId,
+                'user_id' => $user_id,
+            ]);
+        }
+
         return redirect('/home/' . $user_id);
     }
 

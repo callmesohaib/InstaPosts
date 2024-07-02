@@ -7,23 +7,14 @@ use App\Http\Controllers\SignController;
 use App\Http\Controllers\logoutController;
 use App\Http\Controllers\profileController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-// Routes that require authentication
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/home/{id}', [HomeController::class, 'index'])->name('home');
     Route::post('/comment/{postId}/{id}', [HomeController::class, 'getComment']);
     Route::get('/upload/{id}', [HomeController::class, 'upload']);
     Route::post('/upload/{id}', [HomeController::class, 'picturePost']);
+    Route::get('/like/{postId}/{id}', [HomeController::class, 'likePost']);
     Route::get('/logout', [logoutController::class, 'logout']);
     Route::get('/deletepost/{postId}/{user_id}', [HomeController::class, 'deletePost'])->name('post.delete');
     Route::get('/profile/{id}', [profileController::class, 'index'])->name('profile');
