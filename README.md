@@ -29,6 +29,8 @@ JavaScript is mainly used for Dom manipulation.
 
 11.Like & Unlike the Post
 
+12.Like & Unlike the Other Users Posts
+
 ## Screenshots
 
 ![Instagram - Google Chrome 23-Jun-24 6_20_41 PM](https://github.com/callmesohaib/Instagram/assets/132386212/1a304b3a-4926-4be7-ac7c-272c92c77674)
