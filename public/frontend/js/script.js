@@ -49,21 +49,8 @@ commentbtns.forEach((commentbtn, index) => {
 });
 
 
-  let heartbtns = document.querySelectorAll(".left-icon .like");
-
-  
-  
-  heartbtns.forEach((heartbtn) => {
-      heartbtn.addEventListener("click", function () {
-          if (heartbtn.style.color === "red") {
-            heartbtn.innerHTML="<i class='bx bx-heart'></i>"
-            heartbtn.style.color = "white";
-          } else {
-            heartbtn.innerHTML="<i class='bx bxs-heart'></i>"
-              heartbtn.style.color = "red";
-          }
-      });
-  });
+  let heartbtns = document.querySelectorAll(".left-icon .like-button .liked");
+  heartbtns.innerHTML="<i class='bx bx-heart'></i>"
 
 
 
