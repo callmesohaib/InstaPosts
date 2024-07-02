@@ -27,6 +27,7 @@ JavaScript is mainly used for Dom manipulation.
 
 10.Delete the Account
 
+11.Like & Unlike the Post
 
 ## Screenshots
 
